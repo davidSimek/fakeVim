@@ -12,7 +12,6 @@
 int main() {
     bool shouldRun = true;
 
-    std::mutex keyMutex;
     int key;
     int currentkey = key;
 
