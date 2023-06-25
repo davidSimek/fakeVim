@@ -9,6 +9,7 @@
 #include <sstream>
 #include "textBuffer.h"
 #include "ui.h"
+#include "keyHandler.h"
 
 int main() {
     bool shouldRun = true;
@@ -19,7 +20,7 @@ int main() {
     bool typed = true;
     int counter = 1000000;
 
-    TextBuffer tb(20, 30);
+    TextBuffer tb(20, 20);
 
     // setup reading keys
     initscr();
@@ -53,18 +54,23 @@ int main() {
         }
     });
 
+    UserI* ui = new UserI();
+    char* buffer  = new char[tb.determineSize()];
     while (shouldRun) {
         // timing
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
+        KeyHandler keyHandler(ui);
+        keyHandler.render(tb, key, typed, counter);
+
         // drawing
         clear();
-        tb.change(10, 15, 'r');
-        const char* buffer = tb.getCString();
-        printw("%s", buffer);
-        delete[] buffer;
+        tb.getCString(buffer);
+        tb.empty();
+        printw("%s position is %d %d", buffer, ui->cursorX, ui->cursorY);
     }
-
+    delete[] buffer;
+    delete ui;
     keyListener.join();
     endwin();
     return 0;

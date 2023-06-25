@@ -3,9 +3,9 @@
 #include "textBuffer.h"
 #include <cstring>
 
-TextBuffer::TextBuffer (const int X,const int Y) {
-    dimY = Y;
-    dimX = X;
+TextBuffer::TextBuffer (const int x,const int y) {
+    dimY = y;
+    dimX = x;
     buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, ' '));
 }
 
@@ -13,11 +13,11 @@ std::vector<std::vector<char>>& TextBuffer::getRef() {
     return buffer;
 }
 
-void empty() {
- 
+void TextBuffer::empty() {
+    buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, ' '));
 }
 void TextBuffer::change(int x, int y, const char character) {
-    if (x >= dimX || y >= dimY){
+    if (x >= dimX || y >= dimY || x < 0 || y < 0){
         return;
     }
     buffer[x][y] = character;
@@ -26,28 +26,18 @@ void resize() {
 
 }
 
-const char* TextBuffer::getCString(){
-    // get size of buffer needed
-    size_t totalSize = 0;
-    for (const std::vector<char>& row : buffer) {
-            totalSize += row.size() + 1; // for the new line char
-    }
-    totalSize += 1;  // for null termunation
+size_t TextBuffer::determineSize() {
+    return dimX * dimY + dimY + 1;
+}
 
-    // Create a buffer for the C-style string
-    char* cstr = new char[totalSize];
-    char* current = cstr;
-
-    // Copy the strings and add newline characters
+void TextBuffer::getCString(char* current){
     for (const std::vector<char>& row : buffer) {
-        for (const char& str : row) {
-            *current = str;
+        for (const char& ch : row) {
+            *current = ch;
             current++;
         }
         *current = '\n';
         current++;
     }
     *current = '\0'; // Null terminate the string    
-
-    return cstr;
 }

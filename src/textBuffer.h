@@ -14,7 +14,8 @@ public:
     void empty();
     void change(int x, int y, const char character);
     void resize();
-    const char* getCString();
+    void getCString(char* current);
+    size_t determineSize();
 
     int dimX;
     int dimY;

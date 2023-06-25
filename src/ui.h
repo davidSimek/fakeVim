@@ -1,13 +1,19 @@
 #include "textBuffer.h"
 
-class UI {
+#ifndef UI
+
+#define UI
+
+class UserI {
 
 const static char EMPTY = ' ';
 const static char CURSOR = '#';
-
-private:
-    int cursorX;
-    int cursorY;
 public:
+    int cursorX = 5;
+    int cursorY = 5;
     void moveCursor(TextBuffer& buffer, int x, int y);
+    int getCursorX();
+    int getCursorY();
 };
+
+#endif
