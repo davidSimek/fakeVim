@@ -67,6 +67,8 @@ int main() {
         clear();
         tb.getCString(buffer);
         tb.empty();
+
+
         printw("%s position is %d %d", buffer, ui->cursorX, ui->cursorY);
     }
     delete[] buffer;
