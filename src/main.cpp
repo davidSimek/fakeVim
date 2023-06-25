@@ -6,8 +6,9 @@
 #include <string>
 #include <chrono>
 #include <thread>
-#include "textBuffer.h"
 #include <sstream>
+#include "textBuffer.h"
+#include "ui.h"
 
 int main() {
     bool shouldRun = true;
@@ -59,7 +60,9 @@ int main() {
         // drawing
         clear();
         tb.change(10, 15, 'r');
-        printw("%s", tb.getCString());
+        const char* buffer = tb.getCString();
+        printw("%s", buffer);
+        delete[] buffer;
     }
 
     keyListener.join();
