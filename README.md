@@ -10,7 +10,6 @@ Because I need some work to show. I always do super small projects, but no one c
 - config file
 
 ## Configuration
-This is extremely limited, but I want to make it work as soon as possible.
 `~/.config/fakeVim.conf`  
 You do it just like this:  
 ```
