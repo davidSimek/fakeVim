@@ -11,8 +11,8 @@ Because I need some work to show. I always do super small projects, but no one c
 
 ## Configuration
 This is extremely limited, but I want to make it work as soon as possible.
-`~/.config/fakeVim.conf`
-you do it just like this:  
+`~/.config/fakeVim.conf`  
+You do it just like this:  
 ```
 empty _
 cursor x
