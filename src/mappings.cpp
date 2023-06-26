@@ -1,23 +1,88 @@
 #include "mappings.h"
 #include <iostream>
 #include <fstream>
+#include "cstring"
+#include "log.h"
 
-const char Mappings::CURSOR = '#';
-const char Mappings::EMPTY = ' ';
-const char Mappings::UP = 'k';
-const char Mappings::DOWN = 'j';
-const char Mappings::LEFT = 'h';
-const char Mappings::RIGHT = 'l';
+char Mappings::CURSOR = '#';
+char Mappings::EMPTY = ' ';
+char Mappings::UP = 'k';
+char Mappings::DOWN = 'j';
+char Mappings::LEFT = 'h';
+char Mappings::RIGHT = 'l';
 
 void Mappings::loadConfig(const char* location) {
     std::ifstream ifs(location);
     if (ifs.is_open()) {
         std::string line;
         while (std::getline(ifs, line)) {
-            // line is const char*
+            Mappings::processLine(line.c_str());
         }
         ifs.close();
     } else {
+        Log::addError("couldn't open config file");
         // error: couldn't open
     }    
+}
+
+void Mappings::processLine(std::string line) {
+    std::string variable;
+    char value;
+
+    size_t spacePos = line.find(' ');
+    
+    if (spacePos != std::string::npos) {
+        variable = line.substr(0, spacePos);
+    } else {
+        Log::addError("you probably forgot to assign character for value");
+        return;
+    }
+
+    // Find the position of the character after the first word
+    size_t firstCharPos;
+    if (spacePos != std::string::npos) {
+        firstCharPos = spacePos + 1;
+    } else {
+        Log::addError("there is probably no character set for one or more values");
+        return;
+    }
+    // Extract the first character after the word
+    if (firstCharPos < line.length()) {
+        value = line[firstCharPos];
+    } else {
+        Log::addError("there is probably no character set for one or more values");
+        return;
+    }
+
+    Mappings::trySet(variable.c_str(), value); 
+}
+
+bool Mappings::trySet(const char* name, char value) {
+    Log::addError((std::string(name) + " " + value).c_str());
+    if (strcmp(name, "cursor")){
+        Mappings::CURSOR = value;
+        return true;
+    }
+    if (strcmp(name, "empty")){
+        Mappings::EMPTY = value;
+        return true;
+    }
+    if (strcmp(name, "up")){
+        Mappings::UP = value;
+        return true;
+    }
+    if (strcmp(name, "down")){
+        Mappings::DOWN = value;
+        return true;
+    }
+    if (strcmp(name, "left")){
+        Mappings::LEFT = value;
+        return true;
+    }
+    if (strcmp(name, "right")){
+        Mappings::RIGHT = value;
+        return true;
+    }
+    Log::addError("it looks like you are trying to asign character to non-existent value");
+    return false;
 }

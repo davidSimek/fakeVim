@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <curses.h>
 #include <iostream>
 #include <iterator>
@@ -10,8 +11,15 @@
 #include "textBuffer.h"
 #include "ui.h"
 #include "keyHandler.h"
+#include "mappings.h"
+#include "log.h"
 
 int main() {
+    const char* homeDir = getenv("HOME");
+    std::string filePath = std::string(homeDir) + "/.config/fakeVim/init.conf";
+    Mappings::loadConfig(filePath.c_str());
+
+
     bool shouldRun = true;
 
     int key;
@@ -71,6 +79,7 @@ int main() {
 
 
         printw("%s position is %d %d", buffer, ui->cursorX, ui->cursorY);
+        Log::printError();
     }
     delete[] buffer;
     delete ui;

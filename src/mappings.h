@@ -1,21 +1,26 @@
-#ifndef MAPPINGS
+#include <string>
 
-#define MAPPINGS
+#ifndef MAPPINGS_H
+
+#define MAPPINGS_H
 
 class Mappings {
 public:
     // visuals
-    static const char CURSOR;
-    static const char EMPTY;
+    static char CURSOR;
+    static char EMPTY;
 
     // controls
-    static const char UP;
-    static const char DOWN;
-    static const char LEFT;
-    static const char RIGHT;
+    static char UP;
+    static char DOWN;
+    static char LEFT;
+    static char RIGHT;
 
 
-    void loadConfig(const char* location);
+    static void loadConfig(const char* location);
+private:
+    static bool trySet(const char* name, char value);
+    static void processLine(std::string line);
 };
  
 

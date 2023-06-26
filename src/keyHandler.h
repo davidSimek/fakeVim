@@ -1,11 +1,10 @@
 #include "textBuffer.h"
 #include "ui.h"
 
-#ifndef KEY_HANDLER
+#ifndef KEY_HANDLER_H
 
-#define KEY_HANDLER
+#define KEY_HANDLER_H
 
-#define KEY_HANDLER
 class KeyHandler {
 public:
     KeyHandler(UserI* ui);

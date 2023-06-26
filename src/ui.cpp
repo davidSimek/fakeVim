@@ -1,6 +1,7 @@
 #include "ui.h"
 #include "textBuffer.h"
 #include <curses.h>
+#include "mappings.h"
 
 void UserI::moveCursor(TextBuffer& buffer, int x, int y){
     if (cursorX + x < 0 ||
@@ -11,10 +12,9 @@ void UserI::moveCursor(TextBuffer& buffer, int x, int y){
     } 
     cursorX += x;
     cursorY += y;
-    buffer.change(cursorX, cursorY, UserI::CURSOR);   
 }
 
 void UserI::drawUI(TextBuffer& buffer) {
-    buffer.change(cursorX, cursorY, UserI::CURSOR);
+    buffer.change(cursorX, cursorY, Mappings::CURSOR);
 }
 
