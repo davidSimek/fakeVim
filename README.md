@@ -4,6 +4,10 @@ No.
 ## So why?
 Because I need some work to show. I always do super small projects, but no one cares about these. (Neither do I.)
 
+## Functionality
+- move cursor  
+- log errors  
+- config file
 
 ## Configuration
 This is extremely limited, but I want to make it work as soon as possible.
