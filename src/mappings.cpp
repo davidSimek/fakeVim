@@ -59,27 +59,27 @@ void Mappings::processLine(std::string line) {
 
 bool Mappings::trySet(const char* name, char value) {
     Log::addError((std::string(name) + " " + value).c_str());
-    if (strcmp(name, "cursor")){
+    if (strcmp(name, "cursor") == 0){
         Mappings::CURSOR = value;
         return true;
     }
-    if (strcmp(name, "empty")){
+    if (strcmp(name, "empty") == 0){
         Mappings::EMPTY = value;
         return true;
     }
-    if (strcmp(name, "up")){
+    if (strcmp(name, "up") == 0){
         Mappings::UP = value;
         return true;
     }
-    if (strcmp(name, "down")){
+    if (strcmp(name, "down") == 0){
         Mappings::DOWN = value;
         return true;
     }
-    if (strcmp(name, "left")){
+    if (strcmp(name, "left") == 0){
         Mappings::LEFT = value;
         return true;
     }
-    if (strcmp(name, "right")){
+    if (strcmp(name, "right") == 0){
         Mappings::RIGHT = value;
         return true;
     }

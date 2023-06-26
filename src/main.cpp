@@ -77,8 +77,11 @@ int main() {
         tb.getCString(buffer);
         tb.empty();
 
+        std::stringstream ss;
+        ss << Mappings::EMPTY << " is Empty " << Mappings::CURSOR << " is cursor";
 
         printw("%s position is %d %d", buffer, ui->cursorX, ui->cursorY);
+        printw("\n%s\n", ss.str().c_str());
         Log::printError();
     }
     delete[] buffer;
