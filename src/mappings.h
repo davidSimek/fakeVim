@@ -13,6 +13,9 @@ public:
     static const char DOWN;
     static const char LEFT;
     static const char RIGHT;
+
+
+    void loadConfig(const char* location);
 };
  
 
