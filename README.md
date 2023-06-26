@@ -23,4 +23,5 @@ right l
 ```
 
 ### Dependencies
-```curses.h```
+```curses.h```  
+for reading from and clearing console
