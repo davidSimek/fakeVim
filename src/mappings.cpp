@@ -16,6 +16,10 @@ void Mappings::loadConfig(const char* location) {
     if (ifs.is_open()) {
         std::string line;
         while (std::getline(ifs, line)) {
+            // comments
+            if (line[0] == '#' || strcmp(line.c_str(), "") == 0)
+                continue;
+
             Mappings::processLine(line.c_str());
         }
         ifs.close();

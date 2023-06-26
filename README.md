@@ -11,15 +11,16 @@ Because I need some work to show. I always do super small projects, but no one c
 `~/.config/fakeVim.conf`  
 You do it just like this:  
 ```
+# UI
 empty _
 cursor x
+
+# KEY BINDINGS
 up k
 down j
 left h
 right l
 ```
-
-there will be comments in future, I dont care about that too much now
 
 ### Dependencies
 ```curses.h```
