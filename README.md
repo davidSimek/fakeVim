@@ -11,7 +11,18 @@ Because I need some work to show. I always do super small projects, but no one c
 
 ## Configuration
 This is extremely limited, but I want to make it work as soon as possible.
-```~/.config/fakeVim.conf```
+`~/.config/fakeVim.conf`
+you do it just like this:  
+```
+empty _
+cursor x
+up k
+down j
+left h
+right l
+```
+
+there will be comments in future, I dont care about that too much now
 
 ### Dependencies
 ```curses.h```
