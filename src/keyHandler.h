@@ -9,7 +9,7 @@
 class KeyHandler {
 public:
     KeyHandler(UserI* ui);
-    void render(TextBuffer& tb, int key, bool& typed, int& counter); 
+    void apply(TextBuffer& tb, int key, bool& typed, int& counter); 
 private:
     UserI* ui;
 };

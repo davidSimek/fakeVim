@@ -17,7 +17,7 @@ void TextBuffer::empty() {
     buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, ' '));
 }
 void TextBuffer::change(int x, int y, const char character) {
-    if (x >= dimX || y >= dimY || x < 0 || y < 0){
+    if (x > dimX || y > dimY || x < 0 || y < 0){
         return;
     }
     buffer[x][y] = character;

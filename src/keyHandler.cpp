@@ -4,7 +4,7 @@
 #include "ncurses.h"
 
 
-void KeyHandler::render(TextBuffer& tb, int key, bool& typed, int& counter) {
+void KeyHandler::apply(TextBuffer& tb, int key, bool& typed, int& counter) {
     switch (key) {
         case 'l':
             ui->moveCursor(tb, 0, 1);

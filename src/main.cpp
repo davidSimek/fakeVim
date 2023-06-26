@@ -20,7 +20,7 @@ int main() {
     bool typed = true;
     int counter = 1000000;
 
-    TextBuffer tb(20, 20);
+    TextBuffer tb(40, 40);
 
     // setup reading keys
     initscr();
@@ -61,7 +61,8 @@ int main() {
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
         KeyHandler keyHandler(ui);
-        keyHandler.render(tb, key, typed, counter);
+        keyHandler.apply(tb, key, typed, counter);
+        ui->drawUI(tb);
 
         // drawing
         clear();
