@@ -66,7 +66,7 @@ int main() {
     char* buffer  = new char[tb.determineSize()];
     while (shouldRun) {
         // timing
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        std::this_thread::sleep_for(std::chrono::milliseconds(30));
 
         KeyHandler keyHandler(ui);
         keyHandler.apply(tb, key, typed, counter);
@@ -77,11 +77,7 @@ int main() {
         tb.getCString(buffer);
         tb.empty();
 
-        std::stringstream ss;
-        ss << Mappings::EMPTY << " is Empty " << Mappings::CURSOR << " is cursor";
-
-        printw("%s position is %d %d", buffer, ui->cursorX, ui->cursorY);
-        printw("\n%s\n", ss.str().c_str());
+        printw("%s position is %d %d\n", buffer, ui->cursorX, ui->cursorY);
         Log::printError();
     }
     delete[] buffer;
