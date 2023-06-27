@@ -1,4 +1,4 @@
-#include "textBuffer.h"
+#include "imageBuffer.h"
 #include "ui.h"
 
 #ifndef KEY_HANDLER_H

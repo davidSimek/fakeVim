@@ -8,7 +8,7 @@
 #include <chrono>
 #include <thread>
 #include <sstream>
-#include "textBuffer.h"
+#include "imageBuffer.h"
 #include "ui.h"
 #include "keyHandler.h"
 #include "mappings.h"
