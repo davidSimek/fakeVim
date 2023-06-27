@@ -6,19 +6,24 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
+
 ImageBuffer::ImageBuffer (const int x,const int y) {
     dimX = x;
     dimY = y;
     buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, Mappings::EMPTY));
 }
 
-std::vector<std::vector<char>>& ImageBuffer::getRef() {
+
+std::vector<std::vector<char>>& ImageBuffer::getRef(){
     return buffer;
 }
+
 
 void ImageBuffer::empty() {
     buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, Mappings::EMPTY));
 }
+
+
 void ImageBuffer::change(int x, int y, const char character) {
     if (x >= dimY || y >= dimX || x < 0 || y < 0){
         return;
@@ -29,9 +34,11 @@ void resize() {
 
 }
 
+
 size_t ImageBuffer::determineSize() {
     return dimX * dimY + dimY + 1;
 }
+
 
 void ImageBuffer::getCString(char* current){
     for (const std::vector<char>& row : buffer) {
@@ -53,6 +60,7 @@ int ImageBuffer::getConsoleWidth() {
     }
     return 10;  // Default width if unable to determine
 }
+
 
 int ImageBuffer::getConsoleHeight() {
     struct winsize w;
