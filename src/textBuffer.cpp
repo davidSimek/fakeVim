@@ -4,20 +4,20 @@
 #include <cstring>
 #include "mappings.h"
 
-TextBuffer::TextBuffer (const int x,const int y) {
+ImageBuffer::ImageBuffer (const int x,const int y) {
     dimY = y;
     dimX = x;
     buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, Mappings::EMPTY));
 }
 
-std::vector<std::vector<char>>& TextBuffer::getRef() {
+std::vector<std::vector<char>>& ImageBuffer::getRef() {
     return buffer;
 }
 
-void TextBuffer::empty() {
+void ImageBuffer::empty() {
     buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, Mappings::EMPTY));
 }
-void TextBuffer::change(int x, int y, const char character) {
+void ImageBuffer::change(int x, int y, const char character) {
     if (x > dimX || y > dimY || x < 0 || y < 0){
         return;
     }
@@ -27,11 +27,11 @@ void resize() {
 
 }
 
-size_t TextBuffer::determineSize() {
+size_t ImageBuffer::determineSize() {
     return dimX * dimY + dimY + 1;
 }
 
-void TextBuffer::getCString(char* current){
+void ImageBuffer::getCString(char* current){
     for (const std::vector<char>& row : buffer) {
         for (const char& ch : row) {
             *current = ch;

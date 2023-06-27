@@ -7,9 +7,9 @@
 #define TEXT_BUFFER_H
 
 
-class TextBuffer{
+class ImageBuffer{
 public:
-    TextBuffer(const int X, const int Y);
+    ImageBuffer(const int X, const int Y);
     std::vector<std::vector<char>>& getRef();
     void empty();
     void change(int x, int y, const char character);

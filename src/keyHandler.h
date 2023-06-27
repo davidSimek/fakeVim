@@ -8,7 +8,8 @@
 class KeyHandler {
 public:
     KeyHandler(UserI* ui);
-    void apply(TextBuffer& tb, int key, bool& typed, int& counter); 
+    void apply(ImageBuffer& tb, int key, bool& typed, int& counter); 
+    static void runListener(bool& shouldRun, int& key, int& counter, bool& typed);
 private:
     UserI* ui;
 };
