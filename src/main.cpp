@@ -35,7 +35,7 @@ int main() {
     bool typed = true;
     int counter = 1000000;
 
-    ImageBuffer tb(ImageBuffer::getConsoleWidth() - 1, ImageBuffer::getConsoleHeight());
+    ImageBuffer tb(ImageBuffer::getConsoleWidth() - 1, ImageBuffer::getConsoleHeight() - 5);
     UserI* ui = new UserI();
     char* buffer  = new char[tb.determineSize()];
     KeyHandler keyHandler(ui);
@@ -60,6 +60,7 @@ int main() {
 
         clear();
         printw("%s\n", buffer);
+        printw("width: %d\nheight: %d\n posX: %d\nposY: %d", ImageBuffer::getConsoleWidth(), ImageBuffer::getConsoleHeight(), ui->cursorX, ui->cursorY);
     }
     delete[] buffer;
     delete ui;

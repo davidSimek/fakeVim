@@ -7,8 +7,8 @@
 #include <unistd.h>
 
 ImageBuffer::ImageBuffer (const int x,const int y) {
-    dimY = y;
     dimX = x;
+    dimY = y;
     buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, Mappings::EMPTY));
 }
 
@@ -20,7 +20,7 @@ void ImageBuffer::empty() {
     buffer = std::vector<std::vector<char>>(dimY, std::vector<char>(dimX, Mappings::EMPTY));
 }
 void ImageBuffer::change(int x, int y, const char character) {
-    if (x > dimX || y > dimY || x < 0 || y < 0){
+    if (x >= dimY || y >= dimX || x < 0 || y < 0){
         return;
     }
     buffer[x][y] = character;

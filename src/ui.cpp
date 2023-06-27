@@ -5,9 +5,9 @@
 
 void UserI::moveCursor(ImageBuffer& buffer, int x, int y){
     if (cursorX + x < 0 ||
-        cursorX + x > buffer.dimX - 1 ||
+        cursorX + x >= buffer.dimY ||
         cursorY + y < 0 ||
-        cursorY + y > buffer.dimY - 1) {
+        cursorY + y >= buffer.dimX) {
         return;
     } 
     cursorX += x;
