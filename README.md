@@ -6,6 +6,7 @@ Because I need some work to show. I always do super small projects, but no one c
 - move cursor  
 - log errors  
 - config file
+- resize for size of console (need to make it work on resize)
 
 ## Configuration
 `~/.config/fakeVim.conf`  
