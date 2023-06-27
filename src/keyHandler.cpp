@@ -1,4 +1,4 @@
-#include "textBuffer.h"
+#include "imageBuffer.h"
 #include "ui.h"
 #include "keyHandler.h"
 #include "ncurses.h"

@@ -1,5 +1,5 @@
 #include "ui.h"
-#include "textBuffer.h"
+#include "imageBuffer.h"
 #include <curses.h>
 #include "mappings.h"
 

@@ -1,8 +1,10 @@
 #include <vector>
 #include <string>
-#include "textBuffer.h"
+#include "imageBuffer.h"
 #include <cstring>
 #include "mappings.h"
+#include <sys/ioctl.h>
+#include <unistd.h>
 
 ImageBuffer::ImageBuffer (const int x,const int y) {
     dimY = y;
@@ -41,4 +43,21 @@ void ImageBuffer::getCString(char* current){
         current++;
     }
     *current = '\0'; // Null terminate the string    
+}
+
+
+int ImageBuffer::getConsoleWidth() {
+    struct winsize w;
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) {
+        return w.ws_col;
+    }
+    return 80;  // Default width if unable to determine
+}
+
+int ImageBuffer::getConsoleHeight() {
+    struct winsize w;
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) {
+        return w.ws_row;
+    }
+    return 24;  // Default height if unable to determine
 }

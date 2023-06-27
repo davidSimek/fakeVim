@@ -16,6 +16,8 @@ public:
     void resize();
     void getCString(char* current);
     size_t determineSize();
+    int getConsoleWidth();
+    int getConsoleHeight();
 
     int dimX;
     int dimY;

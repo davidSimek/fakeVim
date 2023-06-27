@@ -1,4 +1,4 @@
-#include "textBuffer.h"
+#include "imageBuffer.h"
 
 #ifndef UI
 
