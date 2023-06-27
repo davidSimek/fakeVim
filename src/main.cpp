@@ -15,21 +15,6 @@
 #include "log.h"
 
 int main() {
-    const char* homeDir = getenv("HOME");
-    std::string filePath = std::string(homeDir) + "/.config/fakeVim/init.conf";
-    Mappings::loadConfig(filePath.c_str());
-
-
-    bool shouldRun = true;
-
-    int key;
-    int currentkey = key;
-
-    bool typed = true;
-    int counter = 1000000;
-
-    TextBuffer tb(40, 40);
-
     // setup reading keys
     initscr();
     cbreak();
@@ -37,47 +22,44 @@ int main() {
     keypad(stdscr, TRUE);
     nodelay(stdscr, TRUE);
 
-    std::thread keyListener([&]() {
-        int realkey;
-        while (shouldRun) {
-            realkey = getch();
+    // set mapping from config file
+    const char* homeDir = getenv("HOME");
+    std::string filePath = std::string(homeDir) + "/.config/fakeVim/init.conf";
+    Mappings::loadConfig(filePath.c_str());
 
-            // make key pressed longer 
-            if (realkey == -1) {
-                typed = false;
-            } else {
-                typed = true;
-            }
 
-            if (typed) {
-                counter = 1000000;
-                key = realkey;
-            } else if(counter >= 0){
-                --counter;
-            }
+    bool shouldRun = true;
 
-            if (counter <= 0) {
-                key = realkey;
-            }
-        }
-    });
+    // key reading handling
+    int key;
+    bool typed = true;
+    int counter = 1000000;
 
+    ImageBuffer tb(40, 40);
     UserI* ui = new UserI();
     char* buffer  = new char[tb.determineSize()];
+    KeyHandler keyHandler(ui);
+    
+    std::thread keyListener([&]() {
+        KeyHandler::runListener(shouldRun, key, counter, typed);
+    });
+
     while (shouldRun) {
         // timing
         std::this_thread::sleep_for(std::chrono::milliseconds(30));
-
-        KeyHandler keyHandler(ui);
+        
+        // draw to buffer
         keyHandler.apply(tb, key, typed, counter);
         ui->drawUI(tb);
 
-        // drawing
-        clear();
+        // pass tb to buffer
         tb.getCString(buffer);
+
+        // filling tb woth Mappings::EMPTY
         tb.empty();
 
-        printw("%s position is %d %d\n", buffer, ui->cursorX, ui->cursorY);
+        clear();
+        printw("%s\n", buffer);
         Log::printError();
     }
     delete[] buffer;

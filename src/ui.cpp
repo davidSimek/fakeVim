@@ -3,7 +3,7 @@
 #include <curses.h>
 #include "mappings.h"
 
-void UserI::moveCursor(TextBuffer& buffer, int x, int y){
+void UserI::moveCursor(ImageBuffer& buffer, int x, int y){
     if (cursorX + x < 0 ||
         cursorX + x > buffer.dimX - 1 ||
         cursorY + y < 0 ||
@@ -14,7 +14,7 @@ void UserI::moveCursor(TextBuffer& buffer, int x, int y){
     cursorY += y;
 }
 
-void UserI::drawUI(TextBuffer& buffer) {
+void UserI::drawUI(ImageBuffer& buffer) {
     buffer.change(cursorX, cursorY, Mappings::CURSOR);
 }
 

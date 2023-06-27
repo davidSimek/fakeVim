@@ -12,8 +12,8 @@ public:
     int cursorX = 5;
     int cursorY = 5;
 
-    void moveCursor(TextBuffer& buffer, int x, int y);
-    void drawUI(TextBuffer& buffer);
+    void moveCursor(ImageBuffer& buffer, int x, int y);
+    void drawUI(ImageBuffer& buffer);
 
     int getCursorX();
     int getCursorY();

@@ -5,7 +5,7 @@
 #include "mappings.h"
 
 
-void KeyHandler::apply(TextBuffer& tb, int key, bool& typed, int& counter) {
+void KeyHandler::apply(ImageBuffer& tb, int key, bool& typed, int& counter) {
     // I am not able to use switch because it requires mapping known in compile-time
     // (if I got it right)
      
@@ -27,4 +27,29 @@ void KeyHandler::apply(TextBuffer& tb, int key, bool& typed, int& counter) {
 
 KeyHandler::KeyHandler(UserI* ui) {
    this->ui = ui;
+}
+
+void KeyHandler::runListener(bool& shouldRun, int& key, int& counter, bool& typed) {
+    int realkey;
+        while (shouldRun) {
+            realkey = getch();
+
+            // make key pressed longer 
+            if (realkey == -1) {
+                typed = false;
+            } else {
+                typed = true;
+            }
+
+            if (typed) {
+                counter = 1000000;
+                key = realkey;
+            } else if(counter >= 0){
+                --counter;
+            }
+
+            if (counter <= 0) {
+                key = realkey;
+            }
+        }
 }
