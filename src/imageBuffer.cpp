@@ -42,7 +42,7 @@ void ImageBuffer::getCString(char* current){
         *current = '\n';
         current++;
     }
-    *current = '\0'; // Null terminate the string    
+    *current = '\0';
 }
 
 
