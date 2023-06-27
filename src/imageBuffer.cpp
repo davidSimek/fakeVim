@@ -51,7 +51,7 @@ int ImageBuffer::getConsoleWidth() {
     if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) {
         return w.ws_col;
     }
-    return 80;  // Default width if unable to determine
+    return 10;  // Default width if unable to determine
 }
 
 int ImageBuffer::getConsoleHeight() {
@@ -59,5 +59,5 @@ int ImageBuffer::getConsoleHeight() {
     if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == 0) {
         return w.ws_row;
     }
-    return 24;  // Default height if unable to determine
+    return 10;  // Default height if unable to determine
 }

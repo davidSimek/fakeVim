@@ -35,7 +35,7 @@ int main() {
     bool typed = true;
     int counter = 1000000;
 
-    ImageBuffer tb(40, 40);
+    ImageBuffer tb(ImageBuffer::getConsoleWidth() - 1, ImageBuffer::getConsoleHeight());
     UserI* ui = new UserI();
     char* buffer  = new char[tb.determineSize()];
     KeyHandler keyHandler(ui);
@@ -60,7 +60,6 @@ int main() {
 
         clear();
         printw("%s\n", buffer);
-        Log::printError();
     }
     delete[] buffer;
     delete ui;
