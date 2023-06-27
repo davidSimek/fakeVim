@@ -3,11 +3,11 @@
 #include <curses.h>
 #include "mappings.h"
 
-void UserI::moveCursor(ImageBuffer& buffer, int x, int y){
+void UserI::moveCursor(ImageBuffer& ib, int x, int y){
     if (cursorX + x < 0 ||
-        cursorX + x >= buffer.dimY ||
+        cursorX + x >= ib.dimY ||
         cursorY + y < 0 ||
-        cursorY + y >= buffer.dimX) {
+        cursorY + y >= ib.dimX) {
         return;
     } 
     cursorX += x;

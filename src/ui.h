@@ -12,7 +12,7 @@ public:
     int cursorX = 5;
     int cursorY = 5;
 
-    void moveCursor(ImageBuffer& buffer, int x, int y);
+    void moveCursor(ImageBuffer& ib, int x, int y);
     void drawUI(ImageBuffer& buffer);
 
     int getCursorX();

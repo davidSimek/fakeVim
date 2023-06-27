@@ -17,7 +17,7 @@ public:
     static char RIGHT;
 
 
-    static void loadConfig(const char* location);
+    static void loadConfig();
 private:
     static bool trySet(const char* name, char value);
     static void processLine(std::string line);

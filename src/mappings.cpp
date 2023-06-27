@@ -11,8 +11,12 @@ char Mappings::DOWN = 'j';
 char Mappings::LEFT = 'h';
 char Mappings::RIGHT = 'l';
 
-void Mappings::loadConfig(const char* location) {
-    std::ifstream ifs(location);
+void Mappings::loadConfig() {
+
+    const char* homeDir = getenv("HOME");
+    std::string filePath = std::string(homeDir) + "/.config/fakeVim/init.conf";
+
+    std::ifstream ifs(filePath.c_str());
     if (ifs.is_open()) {
         std::string line;
         while (std::getline(ifs, line)) {

@@ -23,11 +23,10 @@ int main() {
     nodelay(stdscr, TRUE);
 
     // set mapping from config file
-    const char* homeDir = getenv("HOME");
-    std::string filePath = std::string(homeDir) + "/.config/fakeVim/init.conf";
-    Mappings::loadConfig(filePath.c_str());
+    Mappings::loadConfig();
 
 
+    // main loop control
     bool shouldRun = true;
     bool canSkip = false;
 
@@ -36,11 +35,21 @@ int main() {
     bool typed = true;
     int counter = 1000000;
 
-    ImageBuffer tb(ImageBuffer::getConsoleWidth() - 1, ImageBuffer::getConsoleHeight());
+    // vector<vector<char>> holding image
+    ImageBuffer ib(
+        ImageBuffer::getConsoleWidth() - 1,
+        ImageBuffer::getConsoleHeight()
+    );
+
+    // abstraction over UI like cursor, background ...
     UserI* ui = new UserI();
-    char* buffer  = new char[tb.determineSize()];
+
+    // actual printable buffer
+    char* buffer  = new char[ib.determineSize()];
+
     KeyHandler keyHandler(ui);
     
+    // key reading thread
     std::thread keyListener([&]() {
         KeyHandler::runListener(shouldRun, key, counter, typed);
     });
@@ -51,23 +60,26 @@ int main() {
         // draw to buffer
         
 
-        keyHandler.apply(tb, key, typed, counter, canSkip);
+        keyHandler.apply(ib, key, typed, counter, canSkip);
 
         if (canSkip) {
-              continue;
+            continue;
         }
 
-        ui->drawUI(tb);
+        // wrapper for calling functions rendering to ib
+        ui->drawUI(ib);
 
-        // pass tb to buffer
-        tb.getCString(buffer);
+        // pass ib to buffer
+        ib.getCString(buffer);
 
-        // filling tb woth Mappings::EMPTY
-        tb.empty();
+        // filling ib woth Mappings::EMPTY
+        ib.empty();
 
         clear();
         printw("%s\n", buffer);
     }
+
+    // cleanup
     delete[] buffer;
     delete ui;
     keyListener.join();
