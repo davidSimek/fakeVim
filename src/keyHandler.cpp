@@ -5,10 +5,18 @@
 #include "mappings.h"
 
 
-void KeyHandler::apply(ImageBuffer& tb, int key, bool& typed, int& counter) {
+void KeyHandler::apply(ImageBuffer& tb, int key, bool& typed, int& counter, bool& canSkip) {
     // I am not able to use switch because it requires mapping known in compile-time
     // (if I got it right)
      
+    if (key != -1) {
+        canSkip = false;
+    } else {
+        canSkip = true;
+        return;
+    }
+
+    
     if      (key == Mappings::RIGHT)
         ui->moveCursor(tb,  0,  1);
 

@@ -29,13 +29,14 @@ int main() {
 
 
     bool shouldRun = true;
+    bool canSkip = false;
 
     // key reading handling
     int key;
     bool typed = true;
     int counter = 1000000;
 
-    ImageBuffer tb(ImageBuffer::getConsoleWidth() - 1, ImageBuffer::getConsoleHeight() - 5);
+    ImageBuffer tb(ImageBuffer::getConsoleWidth() - 1, ImageBuffer::getConsoleHeight());
     UserI* ui = new UserI();
     char* buffer  = new char[tb.determineSize()];
     KeyHandler keyHandler(ui);
@@ -47,9 +48,15 @@ int main() {
     while (shouldRun) {
         // timing
         std::this_thread::sleep_for(std::chrono::milliseconds(30));
-        
         // draw to buffer
-        keyHandler.apply(tb, key, typed, counter);
+        
+
+        keyHandler.apply(tb, key, typed, counter, canSkip);
+
+        if (canSkip) {
+              continue;
+        }
+
         ui->drawUI(tb);
 
         // pass tb to buffer
@@ -60,7 +67,6 @@ int main() {
 
         clear();
         printw("%s\n", buffer);
-        printw("width: %d\nheight: %d\n posX: %d\nposY: %d", ImageBuffer::getConsoleWidth(), ImageBuffer::getConsoleHeight(), ui->cursorX, ui->cursorY);
     }
     delete[] buffer;
     delete ui;
