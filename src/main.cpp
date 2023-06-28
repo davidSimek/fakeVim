@@ -43,11 +43,11 @@ int main() {
 
     // abstraction over UI like cursor, background ...
     UserI* ui = new UserI();
+    KeyHandler keyHandler(ui);
 
     // actual printable buffer
     char* buffer  = new char[ib.determineSize()];
 
-    KeyHandler keyHandler(ui);
     
     // key reading thread
     std::thread keyListener([&]() {
@@ -57,9 +57,8 @@ int main() {
     while (shouldRun) {
         // timing
         std::this_thread::sleep_for(std::chrono::milliseconds(30));
-        // draw to buffer
-        
 
+        // resolves if it needs to update, if so, updates ui
         keyHandler.apply(ib, key, typed, counter, canSkip);
 
         if (canSkip) {
