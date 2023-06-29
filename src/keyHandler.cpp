@@ -18,7 +18,6 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
         mode = Modes::NORMAL;
         typed = false;
         counter = -1;
-    } else if(key == Mappings::INPUT_MODE) {
         mode = Modes::INPUT;
         typed = false;
         counter = -1;
