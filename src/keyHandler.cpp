@@ -14,14 +14,12 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
     }
 
     // escape
-    if (key == 27) {
+    if (key == Mappings::NORMAL_MODE) {
         mode = Modes::NORMAL;
-        Mappings::CURSOR = 'N';
         typed = false;
         counter = -1;
     } else if(key == Mappings::INPUT_MODE) {
         mode = Modes::INPUT;
-        Mappings::CURSOR = 'I';
         typed = false;
         counter = -1;
         return;

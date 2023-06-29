@@ -11,6 +11,7 @@ char Mappings::DOWN = 'j';
 char Mappings::LEFT = 'h';
 char Mappings::RIGHT = 'l';
 char Mappings::INPUT_MODE = 'i';
+char Mappings::NORMAL_MODE = 'n';
 
 void Mappings::loadConfig() {
 
@@ -93,6 +94,10 @@ bool Mappings::trySet(const char* name, char value) {
         return true;
     }
     if (strcmp(name, "inputMode")) {
+        Mappings::INPUT_MODE = value;
+        return true;
+    }
+    if (strcmp(name, "normalMode")) {
         Mappings::INPUT_MODE = value;
         return true;
     }

@@ -16,6 +16,7 @@ public:
     static char LEFT;
     static char RIGHT;
     static char INPUT_MODE;
+    static char NORMAL_MODE;
 
 
     static void loadConfig();
