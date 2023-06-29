@@ -10,6 +10,7 @@ char Mappings::UP = 'k';
 char Mappings::DOWN = 'j';
 char Mappings::LEFT = 'h';
 char Mappings::RIGHT = 'l';
+char Mappings::INPUT_MODE = 'i';
 
 void Mappings::loadConfig() {
 
@@ -89,6 +90,10 @@ bool Mappings::trySet(const char* name, char value) {
     }
     if (strcmp(name, "right") == 0){
         Mappings::RIGHT = value;
+        return true;
+    }
+    if (strcmp(name, "inputMode")) {
+        Mappings::INPUT_MODE = value;
         return true;
     }
     Log::addError("it looks like you are trying to asign character to non-existent value");

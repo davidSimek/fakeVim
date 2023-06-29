@@ -6,9 +6,6 @@
 
 
 void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool& canSkip) {
-    // I am not able to use switch because it requires mapping known in compile-time
-    // (if I got it right)
-     
     if (key != -1) {
         canSkip = false;
     } else {
@@ -16,18 +13,34 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
         return;
     }
 
+    // escape
+    if (key == 27) {
+        mode = Modes::NORMAL;
+        Mappings::CURSOR = 'N';
+        typed = false;
+        counter = -1;
+    } else if(key == Mappings::INPUT_MODE) {
+        mode = Modes::INPUT;
+        Mappings::CURSOR = 'I';
+        typed = false;
+        counter = -1;
+        return;
+    }
+
     
-    if      (key == Mappings::RIGHT)
-        ui->moveCursor(ib,  0,  1);
+    if (mode == Modes::NORMAL) {
+        if      (key == Mappings::RIGHT)
+            ui->moveCursor(ib,  0,  1);
 
-    else if (key == Mappings::LEFT)
-        ui->moveCursor(ib,  0, -1);
+        else if (key == Mappings::LEFT)
+            ui->moveCursor(ib,  0, -1);
 
-    else if (key == Mappings::UP)
-        ui->moveCursor(ib, -1,  0);
+        else if (key == Mappings::UP)
+            ui->moveCursor(ib, -1,  0);
 
-    else if (key == Mappings::DOWN)
-        ui->moveCursor(ib,  1,  0);
+        else if (key == Mappings::DOWN)
+            ui->moveCursor(ib,  1,  0);
+    }
     
     typed = false;
     counter = -1;

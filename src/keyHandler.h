@@ -1,5 +1,6 @@
 #include "imageBuffer.h"
 #include "ui.h"
+#include "modes.h"
 
 #ifndef KEY_HANDLER_H
 
@@ -12,6 +13,7 @@ public:
     static void runListener(bool& shouldRun, int& key, int& counter, bool& typed);
 private:
     UserI* ui;
+    Modes mode = Modes::NORMAL;
 };
 
 #endif // !KEY_HANDLER

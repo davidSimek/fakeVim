@@ -17,6 +17,12 @@ public:
 
     int getCursorX();
     int getCursorY();
+
+private:
+    int textX1;
+    int textY1;
+    int textX2;
+    int textY2;
 };
 
 #endif

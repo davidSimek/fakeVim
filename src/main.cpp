@@ -72,6 +72,7 @@ int main() {
             buffer = new char[ib.determineSize()];
             canSkip = false;
         }
+
         if (canSkip) {
             continue;
         }
