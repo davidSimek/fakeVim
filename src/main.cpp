@@ -55,12 +55,23 @@ int main() {
     });
 
     while (shouldRun) {
+
+
         // timing
         std::this_thread::sleep_for(std::chrono::milliseconds(30));
 
         // resolves if it needs to update, if so, updates ui
         keyHandler.apply(ib, key, typed, counter, canSkip);
 
+        int currentWidth, currentHeight;
+        getmaxyx(stdscr, currentHeight, currentWidth);
+
+        if (currentWidth != ib.dimX + 1 || currentHeight != ib.dimY) {
+            ib.resize(currentWidth - 1, currentHeight);
+            delete[] buffer;
+            buffer = new char[ib.determineSize()];
+            canSkip = false;
+        }
         if (canSkip) {
             continue;
         }

@@ -30,8 +30,11 @@ void ImageBuffer::change(int x, int y, const char character) {
     }
     buffer[x][y] = character;
 }
-void resize() {
-
+void ImageBuffer::resize(int newX, int newY) {
+    dimX = newX;
+    dimY = newY;
+    // dont need to use probably, I am too lazy now to care
+    this->empty();
 }
 
 

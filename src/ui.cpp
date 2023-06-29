@@ -15,6 +15,13 @@ void UserI::moveCursor(ImageBuffer& ib, int x, int y){
 }
 
 void UserI::drawUI(ImageBuffer& buffer) {
+    // to not let cursor escape to void while changing size
+    if (cursorX > buffer.dimY)
+        cursorX = buffer.dimY - 1;
+
+    if (cursorY > buffer.dimX)
+        cursorY = buffer.dimX - 1;   
+
     buffer.change(cursorX, cursorY, Mappings::CURSOR);
 }
 

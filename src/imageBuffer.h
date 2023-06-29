@@ -13,7 +13,7 @@ public:
     std::vector<std::vector<char>>& getRef();
     void empty();
     void change(int x, int y, const char character);
-    void resize();
+    void resize(int newX, int newY);
     void getCString(char* current);
     size_t determineSize();
     static int getConsoleWidth();
