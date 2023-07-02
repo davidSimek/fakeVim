@@ -1,5 +1,5 @@
 #include "imageBuffer.h"
-#include "textBuffer.h"
+#include "myTextBuffer.h"
 
 #ifndef UI
 
@@ -11,10 +11,6 @@ const static char EMPTY = ' ';
 const static char CURSOR = '#';
 public:
 
-    UserI(TextBuffer& tb) {
-        this->tb = tb;
-    }
-
     int cursorX = 5;
     int cursorY = 5;
 
@@ -25,9 +21,6 @@ public:
     int getCursorY();
 
     void remove();
-
-
-private:
-    TextBuffer& tb;
 };
+
 #endif

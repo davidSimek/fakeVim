@@ -13,6 +13,7 @@
 #include "keyHandler.h"
 #include "mappings.h"
 #include "log.h"
+#include "textBuffer.h"
 
 int main() {
     // setup reading keys

@@ -1,4 +1,4 @@
-#include "textBuffer.h"
+#include "myTextBuffer.h"
 #include <string>
 #include <vector>
 
