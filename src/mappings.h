@@ -15,6 +15,9 @@ public:
     static char DOWN;
     static char LEFT;
     static char RIGHT;
+    static char REMOVE;
+
+    // modes
     static char INPUT_MODE;
     static char NORMAL_MODE;
 

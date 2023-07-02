@@ -21,6 +21,7 @@ int main() {
     noecho();
     keypad(stdscr, TRUE);
     nodelay(stdscr, TRUE);
+    set_escdelay(50);
 
     // set mapping from config file
     Mappings::loadConfig();

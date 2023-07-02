@@ -1,8 +1,10 @@
 #include "imageBuffer.h"
+#include "modes.h"
 #include "ui.h"
 #include "keyHandler.h"
 #include "ncurses.h"
 #include "mappings.h"
+#include <curses.h>
 
 
 void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool& canSkip) {
@@ -39,6 +41,10 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
 
         else if (key == Mappings::DOWN)
             ui->moveCursor(ib,  1,  0);
+    } else if (mode == Modes::INPUT) {
+        if      (key == Mappings::REMOVE)
+            ui->remove();
+        
     }
     
     typed = false;
