@@ -1,4 +1,5 @@
 #include "mappings.h"
+#include <curses.h>
 #include <iostream>
 #include <fstream>
 #include "cstring"

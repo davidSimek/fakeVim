@@ -18,13 +18,15 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
         mode = Modes::NORMAL;
         typed = false;
         counter = -1;
+        return;
+    }
+    if (key == Mappings::INPUT_MODE) {
         mode = Modes::INPUT;
         typed = false;
         counter = -1;
         return;
     }
 
-    
     if (mode == Modes::NORMAL) {
         if      (key == Mappings::RIGHT)
             ui->moveCursor(ib,  0,  1);
