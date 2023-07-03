@@ -1,6 +1,6 @@
-#include <string>
-
 #ifndef MAPPINGS_H
+
+#include <string>
 
 #define MAPPINGS_H
 

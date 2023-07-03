@@ -25,3 +25,7 @@ void UserI::drawUI(ImageBuffer& buffer) {
     buffer.change(cursorX, cursorY, Mappings::CURSOR);
 }
 
+
+void UserI::remove() {
+
+}

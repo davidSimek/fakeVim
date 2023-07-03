@@ -43,7 +43,7 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
             ui->moveCursor(ib,  1,  0);
     } else if (mode == Modes::INPUT) {
         if      (key == Mappings::REMOVE)
-            ui->remove();
+            ;
         
     }
     

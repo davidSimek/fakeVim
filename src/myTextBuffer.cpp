@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-std::vector<std::vector<char>>& TextBuffer::getString(int firstLine, int height, int widht) {
+std::vector<std::vector<char>>& MyTextBuffer::getString(int firstLine, int height, int widht) {
     int linesCount = 0;
     for (std::string line : lines) {
         int charCount;
@@ -25,7 +25,7 @@ std::vector<std::vector<char>>& TextBuffer::getString(int firstLine, int height,
 }
 
 
-void TextBuffer::addChar(char key, int line, int character) {
+void MyTextBuffer::addChar(char key, int line, int character) {
     if (line >= lines.size() - 1) {
         return;
     }
@@ -38,7 +38,7 @@ void TextBuffer::addChar(char key, int line, int character) {
 }
 
 
-void TextBuffer::deleteChar(int line, int character) {
+void MyTextBuffer::deleteChar(int line, int character) {
     if (line >= lines.size() - 1) {
         return;
     }

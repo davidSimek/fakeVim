@@ -1,13 +1,13 @@
+#ifndef MY_TEXT_BUFFER_H
+
 #include <string>
 #include <string_view>
 #include <vector>
 #include <sstream>
 
-#ifndef TEXT_BUFFER_H
+#define MY_TEXT_BUFFER_H
 
-#define TEXT_BUFFER_H
-
-class TextBuffer {
+class MyTextBuffer {
 public:
     void addChar(char key, int line, int character);
     void deleteChar(int line, int character);

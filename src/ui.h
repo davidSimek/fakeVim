@@ -1,9 +1,10 @@
-#include "imageBuffer.h"
-#include "myTextBuffer.h"
-
 #ifndef UI
 
 #define UI
+
+#include "imageBuffer.h"
+// #include "myTextBuffer.h"
+#include "textBuffer.h"
 
 class UserI {
 
@@ -19,8 +20,9 @@ public:
 
     int getCursorX();
     int getCursorY();
-
     void remove();
+
+    TextBuffer& tb;
 };
 
 #endif

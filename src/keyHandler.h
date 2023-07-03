@@ -1,8 +1,9 @@
+#ifndef KEY_HANDLER_H
+
 #include "imageBuffer.h"
 #include "ui.h"
 #include "modes.h"
 
-#ifndef KEY_HANDLER_H
 
 #define KEY_HANDLER_H
 

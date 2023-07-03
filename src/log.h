@@ -1,6 +1,6 @@
-#include <sstream>
-
 #ifndef LOG_H
+
+#include <sstream>
 
 #define LOG_H
 

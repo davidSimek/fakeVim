@@ -1,8 +1,8 @@
+#ifndef TEXT_BUFFER_H
+
 #include <memory>
 #include <vector>
 #include <string>
-
-#ifndef TEXT_BUFFER_H
 
 #define TEXT_BUFFER_H
 
