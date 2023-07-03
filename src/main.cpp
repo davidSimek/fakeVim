@@ -14,7 +14,7 @@
 #include "keyHandler.h"
 #include "mappings.h"
 #include "log.h"
-#include "myTextBuffer.h"
+#include "textBuffer.h"
 
 int main() {
     // setup reading keys
@@ -44,8 +44,11 @@ int main() {
         ImageBuffer::getConsoleHeight()
     );
 
+    // holds text you are editing
+    TextBuffer* tb = new TextBuffer();
+
     // abstraction over UI like cursor, background ...
-    UserI* ui = new UserI();
+    UserI* ui = new UserI(tb);
     KeyHandler keyHandler(ui);
 
     // actual printable buffer

@@ -1,10 +1,10 @@
-#ifndef TEXT_BUFFER_H
+#ifndef IMAGE_BUFFER_H
 
 #include <memory>
 #include <vector>
 #include <string>
 
-#define TEXT_BUFFER_H
+#define IMAGE_BUFFER_H
 
 
 class ImageBuffer{

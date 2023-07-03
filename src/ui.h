@@ -12,6 +12,8 @@ const static char EMPTY = ' ';
 const static char CURSOR = '#';
 public:
 
+    UserI(TextBuffer* tb);
+
     int cursorX = 5;
     int cursorY = 5;
 
@@ -22,7 +24,7 @@ public:
     int getCursorY();
     void remove();
 
-    TextBuffer& tb;
+    TextBuffer* tb;
 };
 
 #endif

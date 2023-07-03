@@ -29,3 +29,7 @@ void UserI::drawUI(ImageBuffer& buffer) {
 void UserI::remove() {
 
 }
+
+UserI::UserI(TextBuffer* tb) {
+    this->tb = tb;
+}
