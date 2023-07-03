@@ -9,6 +9,7 @@
 #include <thread>
 #include <sstream>
 #include "imageBuffer.h"
+
 #include "ui.h"
 #include "keyHandler.h"
 #include "mappings.h"
