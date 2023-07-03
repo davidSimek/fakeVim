@@ -44,8 +44,9 @@ int main() {
         ImageBuffer::getConsoleHeight()
     );
 
+    std::string initText = "Hello fake Vim!";
     // holds text you are editing
-    TextBuffer* tb = new TextBuffer();
+    TextBuffer* tb = new TextBuffer(initText);
 
     // abstraction over UI like cursor, background ...
     UserI* ui = new UserI(tb);
@@ -99,6 +100,7 @@ int main() {
     // cleanup
     delete[] buffer;
     delete ui;
+    delete tb;
     keyListener.join();
     endwin();
     return 0;

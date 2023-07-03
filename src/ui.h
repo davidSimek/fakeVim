@@ -24,7 +24,13 @@ public:
     int getCursorY();
     void remove();
 
+private:
     TextBuffer* tb;
+    int textX1;
+    int textX2;
+    int textY1;
+    int textY2;
+    
 };
 
 #endif

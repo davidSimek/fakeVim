@@ -9,10 +9,13 @@
 
 class TextBuffer {
 public:
+
+    TextBuffer(std::string initText);
+
     void addChar(char key, int line, int character);
     void deleteChar(int line, int character);
 
-    std::vector<std::vector<char>>& getString(int firstLine, int height, int widht);
+    std::vector<std::vector<char>>& getMatrix(int firstLine, int height, int widht);
 
 
 private:
