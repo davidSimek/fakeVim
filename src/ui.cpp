@@ -23,13 +23,14 @@ void UserI::drawUI(ImageBuffer& buffer) {
         cursorY = buffer.dimX - 1;   
 
 
-    std::vector<std::vector<char>>& metrix = tb->getMatrix(0, 10, 20);
+    updateTextDimensions();
+    std::vector<std::vector<char>>& metrix = tb->getMatrix(0, textHeight, textWidth);
 
     // std::vector<std::vector<char>> metrix = {{'h', 'e', 'l', 'l', 'o'}, {'w', 'o', 'r', 'l', 'd'}};
 
     for (int i = 0; i < metrix.size(); ++i) {
         for (int j = 0; j < metrix[0].size(); ++j) {
-             buffer.change(i, j, metrix[i][j]);
+             buffer.change(i + textX, j + textY, metrix[i][j]);
         }
     }
 
@@ -43,4 +44,12 @@ void UserI::remove() {
 
 UserI::UserI(TextBuffer* tb) {
     this->tb = tb;
+    updateTextDimensions();
+}
+
+void UserI::updateTextDimensions() {
+    this->textX = 0;
+    this->textY = 0;
+    this->textHeight = ImageBuffer::getConsoleHeight() - textX;
+    this->textWidth = ImageBuffer::getConsoleWidth() - textY;
 }

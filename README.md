@@ -3,10 +3,10 @@
 Because I need some work to show. I always do super small projects, but no one cares about these. (Neither do I.)
 
 ## Functionality
-- move cursor  
 - log errors  
 - config file
 - adapts for change in size of window / font size
+- finally it can display text from buffer
 
 ## Configuration
 `~/.config/fakeVim.conf`  
@@ -21,6 +21,9 @@ up k
 down j
 left h
 right l
+
+# EDIT 
+remove x
 ```
 
 ### Dependencies

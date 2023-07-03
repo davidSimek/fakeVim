@@ -23,14 +23,14 @@ public:
     int getCursorX();
     int getCursorY();
     void remove();
+    void updateTextDimensions();
 
 private:
     TextBuffer* tb;
-    int textX1;
-    int textX2;
-    int textY1;
-    int textY2;
-    
+    int textX;
+    int textY;
+    int textHeight;
+    int textWidth;
 };
 
 #endif
