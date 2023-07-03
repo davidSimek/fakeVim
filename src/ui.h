@@ -23,6 +23,7 @@ public:
     int getCursorX();
     int getCursorY();
     void remove();
+    void add(char key);
     void updateTextDimensions();
 
 private:

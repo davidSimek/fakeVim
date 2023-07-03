@@ -94,15 +94,15 @@ bool Mappings::trySet(const char* name, char value) {
         Mappings::RIGHT = value;
         return true;
     }
-    if (strcmp(name, "inputMode")) {
+    if (strcmp(name, "inputMode") == 0) {
         Mappings::INPUT_MODE = value;
         return true;
     }
-    if (strcmp(name, "normalMode")) {
+    if (strcmp(name, "normalMode") == 0) {
         Mappings::INPUT_MODE = value;
         return true;
     }
-    if (strcmp(name, "remove")) {
+    if (strcmp(name, "remove") == 0) {
         Mappings::REMOVE = value;
         return true;
     }

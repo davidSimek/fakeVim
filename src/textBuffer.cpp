@@ -35,21 +35,20 @@ std::vector<std::vector<char>>& TextBuffer::getMatrix(int firstLine, int height,
 
 
 void TextBuffer::addChar(char key, int line, int character) {
-    if (line >= lines.size() - 1 || line < 0) {
+    if (line >= lines.size() || line < 0) {
         return;
     }
 
     if (character >= lines[line].length() || character < 0) {
         return;
     }
-
     
-     lines[line][character] = key;
+    lines[line].insert(character, 1,key);
 }
 
 
 void TextBuffer::deleteChar(int line, int character) {
-    if (line >= lines.size() - 1 || line < 0) {
+    if (line >= lines.size() || line < 0) {
         return;
     }
 

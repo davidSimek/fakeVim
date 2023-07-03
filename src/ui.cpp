@@ -39,7 +39,11 @@ void UserI::drawUI(ImageBuffer& buffer) {
 
 
 void UserI::remove() {
-    tb->deleteChar(cursorY, cursorX);
+    tb->deleteChar(cursorX, cursorY);
+}
+
+void UserI::add(char key) {
+    tb->addChar(key, cursorY, cursorX);
 }
 
 UserI::UserI(TextBuffer* tb) {

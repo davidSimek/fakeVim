@@ -41,10 +41,11 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
 
         else if (key == Mappings::DOWN)
             ui->moveCursor(ib,  1,  0);
+        else if (key == Mappings::REMOVE)
+                ui->remove();
     } else if (mode == Modes::INPUT) {
-        if      (key == Mappings::REMOVE)
-            ;
-        
+        ui->add(key);    
+        ui->cursorY++;
     }
     
     typed = false;
