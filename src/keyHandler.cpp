@@ -7,7 +7,7 @@
 #include <curses.h>
 
 
-void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool& canSkip) {
+void KeyHandler::apply(ImageBuffer* ib, int key, bool& typed, int& counter, bool& canSkip) {
     if (key != -1) {
         canSkip = false;
     } else {
@@ -31,26 +31,29 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
 
     if (mode == Modes::NORMAL) {
         if      (key == Mappings::RIGHT)
-            ui->moveCursor(ib,  0,  1);
+            ui->moveCursor(1,  0);
 
         else if (key == Mappings::LEFT)
-            ui->moveCursor(ib,  0, -1);
+            ui->moveCursor(-1,  0);
 
         else if (key == Mappings::UP)
-            ui->moveCursor(ib, -1,  0);
+            ui->moveCursor(0, -1);
 
         else if (key == Mappings::DOWN)
-            ui->moveCursor(ib,  1,  0);
+            ui->moveCursor(0,  1);
         else if (key == Mappings::REMOVE)
                 ui->remove();
     } else if (mode == Modes::INPUT) {
-        if (key == KEY_ENTER) {
-            // ui->newLine();
-            return;
+        if        (key == KEY_ENTER ||
+                   key == '\n') {
+            ui->newLine();
+        } else if (key == KEY_BACKSPACE) {
+            ui->remove();
         }
-        ui->add(key);    
-        // ui->cursorCharacter++;
-        ui->moveCursor(ib, 1, 0);
+        else {
+            ui->add(key);    
+            ui->moveCursor(1, 0);
+        }
     }
     
     typed = false;

@@ -7,19 +7,19 @@
 class Mappings {
 public:
     // visuals
-    static char CURSOR;
-    static char EMPTY;
+    static int CURSOR;
+    static int EMPTY;
 
     // controls
-    static char UP;
-    static char DOWN;
-    static char LEFT;
-    static char RIGHT;
-    static char REMOVE;
+    static int UP;
+    static int DOWN;
+    static int LEFT;
+    static int RIGHT;
+    static int REMOVE;
 
     // modes
-    static char INPUT_MODE;
-    static char NORMAL_MODE;
+    static int INPUT_MODE;
+    static int NORMAL_MODE;
 
 
     static void loadConfig();

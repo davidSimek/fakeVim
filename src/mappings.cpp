@@ -5,15 +5,15 @@
 #include "cstring"
 #include "log.h"
 
-char Mappings::CURSOR = '#';
-char Mappings::EMPTY = ' ';
-char Mappings::UP = 'k';
-char Mappings::DOWN = 'j';
-char Mappings::LEFT = 'h';
-char Mappings::RIGHT = 'l';
-char Mappings::INPUT_MODE = 'i';
-char Mappings::NORMAL_MODE = 27;
-char Mappings::REMOVE = 'x';
+int Mappings::CURSOR = '#';
+int Mappings::EMPTY = ' ';
+int Mappings::UP = 'k';
+int Mappings::DOWN = 'j';
+int Mappings::LEFT = 'h';
+int Mappings::RIGHT = 'l';
+int Mappings::INPUT_MODE = 'i';
+int Mappings::NORMAL_MODE = 27;
+int Mappings::REMOVE = 'x';
 void Mappings::loadConfig() {
 
     const char* homeDir = getenv("HOME");

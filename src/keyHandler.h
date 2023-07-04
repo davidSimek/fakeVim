@@ -10,7 +10,7 @@
 class KeyHandler {
 public:
     KeyHandler(UserI* ui);
-    void apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool& canSkip); 
+    void apply(ImageBuffer* ib, int key, bool& typed, int& counter, bool& canSkip); 
     static void runListener(bool& shouldRun, int& key, int& counter, bool& typed);
 private:
     UserI* ui;

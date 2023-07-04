@@ -38,22 +38,23 @@ int main() {
     bool typed = true;
     int counter = 1000000;
 
+    std::vector<std::string> initText = {"Hello fake Vim!!", "second line", "third line", "Heloo, this is long text that wraps around just to test it hahahahahahhahaha"};
+
     // vector<vector<char>> holding image
-    ImageBuffer ib(
+    ImageBuffer* ib = new ImageBuffer (
         ImageBuffer::getConsoleWidth() - 1,
         ImageBuffer::getConsoleHeight()
     );
 
-    std::vector<std::string> initText = {"Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!!", "second line", "third line"};
     // holds text you are editing
     TextBuffer* tb = new TextBuffer(initText);
 
     // abstraction over UI like cursor, background ...
-    UserI* ui = new UserI(tb);
+    UserI* ui = new UserI(tb, ib);
     KeyHandler keyHandler(ui);
 
     // actual printable buffer
-    char* buffer  = new char[ib.determineSize()];
+    char* buffer  = new char[ib->determineSize()];
 
     
     // key reading thread
@@ -73,10 +74,10 @@ int main() {
         int currentWidth, currentHeight;
         getmaxyx(stdscr, currentHeight, currentWidth);
 
-        if (currentWidth != ib.dimX + 1 || currentHeight != ib.dimY) {
-            ib.resize(currentWidth - 1, currentHeight);
+        if (currentWidth != ib->dimX + 1 || currentHeight != ib->dimY) {
+            ib->resize(currentWidth - 1, currentHeight);
             delete[] buffer;
-            buffer = new char[ib.determineSize()];
+            buffer = new char[ib->determineSize()];
             canSkip = false;
         }
 
@@ -85,13 +86,13 @@ int main() {
         }
 
         // wrapper for calling functions rendering to ib
-        ui->drawUI(ib);
+        ui->drawUI();
 
         // pass ib to buffer
-        ib.getCString(buffer);
+        ib->getCString(buffer);
 
         // filling ib woth Mappings::EMPTY
-        ib.empty();
+        ib->empty();
 
         clear();
         printw("%s\n", buffer);

@@ -17,6 +17,8 @@ public:
 
     std::vector<std::vector<char>>& getMatrix(int firstLine, int height, int widht);
 
+    void insertLine(int afterLine);
+
 
 private:
     std::vector<std::string> lines;
