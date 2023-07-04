@@ -25,10 +25,11 @@ void ImageBuffer::empty() {
 
 
 void ImageBuffer::change(int x, int y, const char character) {
-    if (x >= dimY || y >= dimX || x < 0 || y < 0){
+    if (x >= dimX || y >= dimY || x < 0 || y < 0){
         return;
     }
-    buffer[x][y] = character;
+    buffer[y][x] = character;
+    // buffer[y][x] = character;
 }
 void ImageBuffer::resize(int newX, int newY) {
     dimX = newX;
@@ -44,9 +45,9 @@ size_t ImageBuffer::determineSize() {
 
 
 void ImageBuffer::getCString(char* current){
-    for (const std::vector<char>& row : buffer) {
-        for (const char& ch : row) {
-            *current = ch;
+    for (const std::vector<char>& line : buffer) {
+        for (const char& character : line) {
+            *current = character;
             current++;
         }
         *current = '\n';

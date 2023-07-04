@@ -62,3 +62,7 @@ void TextBuffer::deleteChar(int line, int character) {
 TextBuffer::TextBuffer(std::vector<std::string> initText) {
     this->lines = initText;
 }
+
+void TextBuffer::insertLine(int afterLine) {
+    lines.insert(lines.begin() + afterLine + 1, std::string());
+}
