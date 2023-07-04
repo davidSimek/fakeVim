@@ -10,7 +10,7 @@
 class TextBuffer {
 public:
 
-    TextBuffer(std::string initText);
+    TextBuffer(std::vector<std::string> initText);
 
     void addChar(char key, int line, int character);
     void deleteChar(int line, int character);

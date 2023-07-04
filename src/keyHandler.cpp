@@ -22,7 +22,7 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
         counter = -1;
         return;
     }
-    if (key == Mappings::INPUT_MODE) {
+    if (key == Mappings::INPUT_MODE && mode == Modes::NORMAL) {
         mode = Modes::INPUT;
         typed = false;
         counter = -1;
@@ -44,8 +44,13 @@ void KeyHandler::apply(ImageBuffer& ib, int key, bool& typed, int& counter, bool
         else if (key == Mappings::REMOVE)
                 ui->remove();
     } else if (mode == Modes::INPUT) {
+        if (key == KEY_ENTER) {
+            // ui->newLine();
+            return;
+        }
         ui->add(key);    
-        ui->cursorY++;
+        // ui->cursorCharacter++;
+        ui->moveCursor(ib, 1, 0);
     }
     
     typed = false;

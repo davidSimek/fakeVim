@@ -4,29 +4,27 @@
 #include "mappings.h"
 
 void UserI::moveCursor(ImageBuffer& ib, int x, int y){
-    if (cursorX + x < 0 ||
-        cursorX + x >= ib.dimY ||
-        cursorY + y < 0 ||
-        cursorY + y >= ib.dimX) {
+    if (cursorCharacter + x < 0 ||
+        cursorCharacter + x >= ib.dimX ||
+        cursorLine + y < 0 ||
+        cursorLine + y >= ib.dimY) {
         return;
     } 
-    cursorX += x;
-    cursorY += y;
+    cursorCharacter += x;
+    cursorLine += y;
 }
 
 void UserI::drawUI(ImageBuffer& buffer) {
     // to not let cursor escape to void while changing size
-    if (cursorX > buffer.dimY)
-        cursorX = buffer.dimY - 1;
+    if (cursorCharacter > buffer.dimY)
+        cursorCharacter = buffer.dimY - 1;
 
-    if (cursorY > buffer.dimX)
-        cursorY = buffer.dimX - 1;   
+    if (cursorLine > buffer.dimX)
+        cursorLine = buffer.dimX - 1;   
 
 
     updateTextDimensions();
     std::vector<std::vector<char>>& metrix = tb->getMatrix(0, textHeight, textWidth);
-
-    // std::vector<std::vector<char>> metrix = {{'h', 'e', 'l', 'l', 'o'}, {'w', 'o', 'r', 'l', 'd'}};
 
     for (int i = 0; i < metrix.size(); ++i) {
         for (int j = 0; j < metrix[0].size(); ++j) {
@@ -34,16 +32,16 @@ void UserI::drawUI(ImageBuffer& buffer) {
         }
     }
 
-    buffer.change(cursorX, cursorY, Mappings::CURSOR);
+    buffer.change(cursorCharacter, cursorLine, Mappings::CURSOR);
 }
 
 
 void UserI::remove() {
-    tb->deleteChar(cursorX, cursorY);
+    tb->deleteChar(cursorCharacter, cursorLine);
 }
 
 void UserI::add(char key) {
-    tb->addChar(key, cursorY, cursorX);
+    tb->addChar(key, cursorLine, cursorCharacter);
 }
 
 UserI::UserI(TextBuffer* tb) {

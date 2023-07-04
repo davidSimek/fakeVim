@@ -59,6 +59,6 @@ void TextBuffer::deleteChar(int line, int character) {
     lines[line].erase(character, 1);
 }
 
-TextBuffer::TextBuffer(std::string initText) {
-    this->lines.push_back(initText);
+TextBuffer::TextBuffer(std::vector<std::string> initText) {
+    this->lines = initText;
 }

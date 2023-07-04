@@ -44,7 +44,7 @@ int main() {
         ImageBuffer::getConsoleHeight()
     );
 
-    std::string initText = "Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, ";
+    std::vector<std::string> initText = {"Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!, Hello fake Vim!!", "second line", "third line"};
     // holds text you are editing
     TextBuffer* tb = new TextBuffer(initText);
 

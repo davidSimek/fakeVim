@@ -14,8 +14,8 @@ public:
 
     UserI(TextBuffer* tb);
 
-    int cursorX = 5;
-    int cursorY = 5;
+    int cursorLine = 5;
+    int cursorCharacter = 5;
 
     void moveCursor(ImageBuffer& ib, int x, int y);
     void drawUI(ImageBuffer& buffer);
